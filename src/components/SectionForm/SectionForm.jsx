@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/slices/contactsSlice';
 import styles from './section-form.module.css';
 
@@ -7,6 +7,7 @@ const SectionForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
   const handleChange = e => {
     const nameInput = e.currentTarget.name;
@@ -26,7 +27,18 @@ const SectionForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    const isExistingContact = contacts.find(
+      ({ name }) =>
+        name.toLowerCase() === e.currentTarget.name.value.toLowerCase()
+    );
+
+    if (isExistingContact) {
+      return alert(`${e.currentTarget.name.value} is already in contacs.`);
+    }
+
     dispatch(addContact({ name, number }));
+
     reset();
   };
 
