@@ -28,4 +28,6 @@ export const contactsSlice = createSlice({
   },
 });
 
+console.log(contactsSlice);
+
 export const { addContact, deleteContact } = contactsSlice.actions;
