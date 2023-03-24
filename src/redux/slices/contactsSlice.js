@@ -3,7 +3,7 @@ import { initialContacts } from 'data/initial-contacts';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: initialContacts,
+  initialState: initialContacts.items,
   reducers: {
     addContact: {
       reducer(state, action) {
