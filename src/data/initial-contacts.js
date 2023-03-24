@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 
+//
+
 const initialContacts = {
   items: [
     { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
